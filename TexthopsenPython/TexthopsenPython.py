@@ -42,9 +42,12 @@ def get_jump_length(character: str) -> int:
     # z.B.: kleines c (99): 99 - 96 = 3; bei einem kleinen c springen wir also 3 Felder;
     return ord(letter) - 96
 
-
+# funktion um direkt zu einem bestimmten Feld zu springen
 def jump_to(index: int) -> int:
     new_index = index
+    # hier korriegeren wir den Ort wo hingesprungen werden soll, wenn wir versuchen
+    # auf ein nicht valides Feld zu springen, korriegieren wir die Position bis
+    # wir ein valides Feld haben
     while new_index < len(proccessing_text) and not is_valid_field(new_index):
         new_index += 1
 
