@@ -4,10 +4,15 @@ proccessing_text = ""
 bela_index = 0
 amira_index = 1
 
-
+# hier wollen wir testen, ob das Feld auf das wir versuchen zu springen überhaupt ein uns
+# bekanntes ist (valides Feld); wir nehmen als ersten Parameter also den Index zu dem char
+# aus der Liste des gesammten Textes (auch ein String ist tiefer gesehen eine Liste!)
 def is_valid_field(index: int) -> bool:
+    # nur wenn der Index im Bereich der Liste ist, machen wir weiter
     if 0 <= index < len(proccessing_text):
         processing_char = proccessing_text[index]
+        # isalpha beinhaltet alle Buchstaben von a - z; nicht aber ä, ö, ü, ö
+        # deswegen prüfen wir diese nochmal seperat
         return processing_char.isalpha() or processing_char in 'äöüß'
     return False
 
