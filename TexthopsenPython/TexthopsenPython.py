@@ -11,10 +11,18 @@ def is_valid_field(index: int) -> bool:
         return processing_char.isalpha() or processing_char in 'äöüß'
     return False
 
-
+# erster parameter: den charakter, von dem die Sprunglänge ermittelt werden soll
+# rückgabe: die korrekte sprungweite
 def get_jump_length(character: str) -> int:
+    # hier nutzen wir den ASCII Code, jeder Buchstabe hat eine eindeutliche Zahl
+    # die diesem zugeordnet ist, ein kleine "a" hat z.B. den Code 97; Ein großes "A"
+    # hat den Code 65, ein "B" die 66 usw...
+    # daher machen wir mit der .lower funktion jeden Buchstaben zu einem klein Buchstaben
+    # dann können wir weiter machen
     letter = character.lower()
 
+    # diese buchstaben passen nicht mit dem Rest unserer "Formel" zusammen, daher
+    # geben wir hier direkt die richtige Sprungweite zurück
     if letter == 'ä':
         return 27
     elif letter == 'ö':
@@ -24,6 +32,9 @@ def get_jump_length(character: str) -> int:
     elif letter == 'ß':
         return 30
 
+    # da jeder Buchstabe jetzt ein klein Buchstabe ist, können wir diesen - 96 rechnen
+    # z.B.: kleines a (97): 97 - 96 = 1; Bei einem kleinen a springen wir also 1 Feld;
+    # z.B.: kleines c (99): 99 - 96 = 3; bei einem kleinen c springen wir also 3 Felder;
     return ord(letter) - 96
 
 
@@ -48,7 +59,7 @@ def get_text_to_proccess(arg: str) -> str:
     return arg
 
 
-def main():
+def main() -> None:
     global proccessing_text, bela_index, amira_index
 
     while True:
@@ -57,13 +68,13 @@ def main():
 
         i = 0
         while True:
-            if i % 2 == 0:  # Bella's turn
+            if i % 2 == 0:  # Bella ist dran
                 bela_index += get_jump_length(proccessing_text[bela_index])
                 if bela_index >= len(proccessing_text):
                     print("Bella hat gewonnen!")
                     break
                 bela_index = jump_to(bela_index)
-            else:  # Amira's turn
+            else:  # Amira ist dran
                 amira_index += get_jump_length(proccessing_text[amira_index])
                 if amira_index >= len(proccessing_text):
                     print("Amira hat gewonnen!")
@@ -82,4 +93,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main() #diese methode wird aufgerufen, wenn das Programm startet
