@@ -53,7 +53,9 @@ def jump_to(index: int) -> int:
 
     return new_index
 
-
+# wenn man einen pfad zu einer .txt Datei eingibt, versucht er diese Datei zu öffnen
+# wenn er das schafft, gibt er den Content der Datei als String zurück. Sonst gibt er
+# den eingegebenen Text zurück
 def get_text_to_proccess(arg: str) -> str:
     if len(arg) >= 4 and arg.endswith(".txt"):
         try:
