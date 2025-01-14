@@ -73,14 +73,25 @@ def main() -> None:
     global proccessing_text, bela_index, amira_index
 
     while True:
+        # Hier bitten wir den Nutzer, den Pfad zu einer .txt Datei einzugeben
+        # oder auch direkt ohne die Endung .txt
         proccessing_text = input("Bitte gebe den zu spielenden Text ein: \n")
         proccessing_text = get_text_to_proccess(proccessing_text)
+        # get_text_to_proccess gibt uns wie oben gesagt, den gelesenen Text zurück
 
+        # Dieser Abschnitt sollte relativ selbst erklärend sein
+        # while True geht die Schleife solange durch, bis sie manuell abgebrochen wurde
         i = 0
         while True:
+            # Zuerst springen wir für Bella, dann für Amira...
             if i % 2 == 0:  # Bella ist dran
                 bela_index += get_jump_length(proccessing_text[bela_index])
+                # bela_index steht dafür, an welcher Stelle des Textes sich Bela
+                # aktuell befindet, wir holen uns für diese Stelle die richtige Sprunglänge
+                # und springen zur neuen Stelle.
                 if bela_index >= len(proccessing_text):
+                    # Wenn wir am Ende des Textes sind, brechen wir die while Schleife ab
+                    # und geben aus, das Bella gewonnen hat
                     print("Bella hat gewonnen!")
                     break
                 bela_index = jump_to(bela_index)
