@@ -85,21 +85,23 @@ def main() -> None:
         while True:
             # Zuerst springen wir für Bella, dann für Amira...
             if i % 2 == 0:  # Bella ist dran
-                bela_index += get_jump_length(proccessing_text[bela_index])
+                jump_length: int = get_jump_length(proccessing_text[bela_index])
                 # bela_index steht dafür, an welcher Stelle des Textes sich Bela
                 # aktuell befindet, wir holen uns für diese Stelle die richtige Sprunglänge
                 # und springen zur neuen Stelle.
-                if bela_index >= len(proccessing_text):
+                if bela_index + jump_length >= len(proccessing_text) - 1:
                     # Wenn wir am Ende des Textes sind, brechen wir die while Schleife ab
                     # und geben aus, das Bella gewonnen hat
                     print("Bella hat gewonnen!")
                     break
+                bela_index += jump_length
                 bela_index = jump_to(bela_index)
             else:  # Amira ist dran
-                amira_index += get_jump_length(proccessing_text[amira_index])
-                if amira_index >= len(proccessing_text):
+                jump_length: int = get_jump_length(proccessing_text[amira_index])
+                if amira_index + jump_length >= len(proccessing_text) - 1:
                     print("Amira hat gewonnen!")
                     break
+                amira_index += jump_length
                 amira_index = jump_to(amira_index)
 
             i += 1
