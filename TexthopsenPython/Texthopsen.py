@@ -1,3 +1,6 @@
+# HINWEIS: Bei Variablen ist es NICHT notwendig {name}: datentyp zu schreiben, es ist aber der Standard in der
+# Industrie, genauso wie den Rückgabewert einer Methode explizit mit {methodename} -> datentyp anzugeben
+
 # alle Buchstaben die eine festgegebene sprungweite haben sind in dieser liste, alle anderen werden vollständig
 # ignoriert
 VALID_CHARACTERS = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
